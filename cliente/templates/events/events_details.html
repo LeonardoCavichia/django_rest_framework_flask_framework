@@ -1,0 +1,220 @@
+{% extends "main.html" %}
+{% block content %}
+
+
+    <div class="dashboard-wrapper">
+
+        <div class="container-fluid  dashboard-content">
+
+            <div class="row">
+                <div>
+                    <div class="section-block" id="c-nav">
+                        <h3 class="section-title">Evento: {{ e.title }}</h3>
+                        <p>Descrição: {{ e.description }}</p>
+
+
+
+                        {%- if cont < 1 -%}
+
+                            <a href="{{ url_for('event.participar', evento_id = e.id) }}"
+                               class="btn btn-success btn-xs">Participar</a>
+
+                        {% else %}
+
+                            <a href="{{ url_for('event.carcelar_participacao', partipant = partipant_id) }}"
+                               class="btn btn-danger btn-xs">Cancelar participação</a>
+
+
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="card">
+                    <div class="card-header tab-regular">
+                        <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="card-tab-1" data-toggle="tab" href="#card-1"
+                                   role="tab" aria-controls="card-1" aria-selected="true">Dados</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="card-tab-2" data-toggle="tab" href="#card-2" role="tab"
+                                   aria-controls="card-2" aria-selected="false">Participantes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="card-tab-3" data-toggle="tab" href="#card-3" role="tab"
+                                   aria-controls="card-3" aria-selected="false">Mensagens</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="card-1" role="tabpanel"
+                                 aria-labelledby="card-tab-1">
+
+                                <h6>Cidade: {{ e.city }}</h6>
+                                <h6>Bairro: {{ e.neighborhood }}</h6>
+                                <h6>Rua: {{ e.street }}</h6>
+                                <h6>Referencia: {{ e.referencePoint }}</h6>
+                                <h6>Data de inicio: {{ e.startDate }}</h6>
+                                <h6>Data do fim: {{ e.endDate }}</h6>
+                                <h6>Categoria: {{ e.eventType.name }}</h6>
+
+
+                            </div>
+                            <div class="tab-pane fade" id="card-2" role="tabpanel" aria-labelledby="card-tab-2">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+
+                                        <th scope="col">Usuario</th>
+                                        <th scope="col">Data do registro</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    {% for p in e.participant %}
+
+                                        <tr>
+                                            <th scope="row">{{ p.username }}</th>
+                                            <td>{{ p.registrationDate }}</td>
+
+                                        </tr>
+
+                                    {% endfor %}
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <div class="tab-pane fade" id="card-3" role="tabpanel" aria-labelledby="card-tab-3">
+
+
+                                {%- if cont > 0 -%}
+                                    <div class="card-body">
+                                        <form method="post">
+                                            <div class="form-group">
+                                                <input name="mensagem" required class="form-control form-control-lg"
+                                                       id="mesage" type="text" placeholder="Sua Mensagem"
+                                                       autocomplete="off">
+                                            </div>
+                                            <input type="hidden" id="participanteID" name="participanteID"
+                                                   value="{{ partipant_id }}">
+
+                                            <input class="btn btn-primary btn-xs" type="submit" name="action"
+                                                   value="Nova mensagem">
+
+                                        </form>
+
+                                    </div>
+
+                                {% endif %}
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Usuário ID</th>
+                                        <th scope="col">Usuário</th>
+                                        <th scope="col">Mensagem</th>
+                                        <th scope="col">Data da Mensagem</th>
+
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    {% for me in m %}
+
+                                        <tr>
+                                            <th scope="row">{{ me.userId }}</th>
+                                            <td>{{ me.username }}</td>
+                                            <td>{{ me.message }}</td>
+                                            <td>{{ me.messageDate }}</td>
+
+                                            {%- if me.userId == userid -%}
+
+                                                <td><a href="{{ url_for('event.deletar_mensagem', mensagem = me.id) }}"
+                                                       class="btn btn-danger btn-xs">Deletar</a></td>
+
+                                                <td>
+                                                    <div class="card-body">
+                                                        <div class="">
+
+                                                            <a href="#" class="btn btn-primary btn-xs"
+                                                               data-toggle="modal"
+                                                               data-target="#{{ me.id }}">Atualizar </a>
+
+
+                                                            <div class="modal fade" id="{{ me.id }}"
+                                                                 role="dialog" aria-labelledby="exampleModalLabel"
+                                                                 aria-hidden="true">
+
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title"
+                                                                                id="exampleModalLabel">Atualizar
+                                                                                Mensagem</h5>
+                                                                            <a href="#" class="close"
+                                                                               data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <form method="post">
+                                                                                <div class="form-group">
+                                                                                    <input name="mensagem" required
+                                                                                           class="form-control form-control-lg"
+                                                                                           id="{{ me.id }}"
+                                                                                           value="{{ me.message }}"
+                                                                                           type="text"
+                                                                                           placeholder="{{ me.message }}"
+                                                                                           autocomplete="off">
+                                                                                </div>
+                                                                                <input type="hidden" id="{{ me.id }}"
+                                                                                       name="mensagemid"
+                                                                                       value="{{ me.id }}">
+
+                                                                                <input class="btn btn-success btn-xs"
+                                                                                       type="submit" name="action"
+                                                                                       value="Atualizar Mensagem">
+
+                                                                            </form>
+
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                </td>
+
+
+                                            {% endif %}
+
+                                        </tr>
+
+                                    {% endfor %}
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+
+{% endblock %}

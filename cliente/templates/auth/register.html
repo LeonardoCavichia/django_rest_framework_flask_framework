@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Registro</title>
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/fonts/circular-std/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/libs/css/style.css') }}">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='assets/vendor/fonts/fontawesome/css/fontawesome-all.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/charts/chartist-bundle/chartist.css') }}">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css') }}">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='assets/vendor/fonts/flag-icon-css/flag-icon.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/charts/c3charts/c3.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/charts/morris-bundle/morris.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/multi-select/css/multi-select.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/multi-select/css/multi-select.css') }}">
+
+
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+    </style>
+</head>
+
+
+<body>
+<!-- ============================================================== -->
+<!-- login page  -->
+<!-- ============================================================== -->
+<div class="splash-container">
+    <div class="card ">
+        <div class="card-header text-center"><h1>EVENTOS PG</h1>
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-group">
+                        <input name="username" required class="form-control form-control-lg" id="username" type="text"
+                               placeholder="Usuário" autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <input name="password" required class="form-control form-control-lg" id="password"
+                               type="password" placeholder="Senha">
+                    </div>
+
+                    <div class="form-group">
+                        <input name="email" required class="form-control form-control-lg" id="email" type="text"
+                               placeholder="Email">
+                    </div>
+
+                    <div class="form-group">
+                        <input name="birthdate" required class="form-control form-control-lg" id="birthdate" type="date"
+                               placeholder="Birthdate">
+                    </div>
+
+                    <label class="custom-control custom-radio custom-control-inline">
+                        <input value="M" type="radio" name="sexo" checked="" class="custom-control-input"><span
+                            class="custom-control-label">Masculino</span>
+                    </label>
+                    <label class="custom-control custom-radio custom-control-inline">
+                        <input value="F" type="radio" name="sexo" class="custom-control-input"><span
+                            class="custom-control-label">Feminino</span>
+                    </label>
+
+                    <button type="submit" value="Register" class="btn btn-primary btn-lg btn-block">Criar conta</button>
+                    <a class="nav-link" href="/user/login">Fazer login</a>
+
+                </form>
+
+
+            </div>
+            <p>
+
+                {{ feedback }}
+
+            </p>
+
+        </div>
+    </div>
+</div>
+</body>
+
+
+</html>

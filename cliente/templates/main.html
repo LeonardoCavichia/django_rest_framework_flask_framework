@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/fonts/circular-std/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/libs/css/style.css') }}">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='assets/vendor/fonts/fontawesome/css/fontawesome-all.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/charts/chartist-bundle/chartist.css') }}">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css') }}">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='assets/vendor/fonts/flag-icon-css/flag-icon.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/charts/c3charts/c3.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/charts/morris-bundle/morris.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/multi-select/css/multi-select.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/multi-select/css/multi-select.css') }}">
+
+
+    <title>Eventos PG</title>
+</head>
+
+
+<style>
+
+    .card {
+
+        border: 1px solid #d0d7e2;
+
+    }
+
+
+</style>
+
+
+<body>
+<!-- ============================================================== -->
+<!-- main wrapper -->
+<!-- ============================================================== -->
+<div class="dashboard-main-wrapper">
+    <!-- ============================================================== -->
+    <!-- navbar -->
+    <!-- ============================================================== -->
+    <div class="dashboard-header">
+        <nav class="navbar navbar-expand-lg bg-white fixed-top">
+            <a class="navbar-brand" href="/">Eventos PG</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- end navbar -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- left sidebar -->
+    <!-- ============================================================== -->
+    <div class="nav-left-sidebar sidebar-dark">
+        <div class="menu-list">
+            <nav class="navbar navbar-expand-lg navbar-light">
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav flex-column">
+                        <li class="nav-divider">
+                            Menu
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
+                               data-target="#submenu-9" aria-controls="submenu-9"><i
+                                    class="fa fa-fw fa-user-circle"></i>Meu Perfil</a>
+                            <div id="submenu-9" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/user/atualizar">Atualizar perfil</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/user/deletar">Desativar perfil</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/user/logout">Fazer logout</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
+                               data-target="#submenu-12" aria-controls="submenu-12"><i class="fab fa-fw fa-wpforms"></i>Eventos</a>
+                            <div id="submenu-12" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/event/criar">Criar evento</a>
+                                    </li>
+
+                                    <li class="nav-item">
+
+                                        <a class="nav-link" href="/event">Eventos</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    {% block content %}{% endblock %}
+
+</div>
+
+
+<script type=text/javascript
+        src="{{ url_for('static', filename='assets/vendor/jquery/jquery-3.3.1.min.js') }}"></script>
+<script type=text/javascript
+        src="{{ url_for('static', filename='assets/vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
+<script type=text/javascript
+        src="{{ url_for('static', filename='assets/vendor/slimscroll/jquery.slimscroll.js') }}"></script>
+<script type=text/javascript
+        src="{{ url_for('static', filename='assets/vendor/charts/chartist-bundle/chartist.min.js') }}"></script>
+<script type=text/javascript
+        src="{{ url_for('static', filename='assets/vendor/charts/sparkline/jquery.sparkline.js') }}"></script>
+<script type=text/javascript
+        src="{{ url_for('static', filename='assets/vendor/charts/morris-bundle/raphael.min.js') }}"></script>
+<script type=text/javascript
+        src="{{ url_for('static', filename='assets/vendor/charts/morris-bundle/morris.js') }}"></script>
+<script type=text/javascript src="{{ url_for('static', filename='assets/libs/js/main-js.js') }}"></script>
+<script type=text/javascript src="{{ url_for('static', filename='assets/vendor/charts/c3charts/c3.min.js') }}"></script>
+<script type=text/javascript
+        src="{{ url_for('static', filename='assets/vendor/charts/c3charts/C3chartjs.js') }}"></script>
+<script type=text/javascript src="{{ url_for('static', filename='assets/libs/js/dashboard-ecommerce.js') }}"></script>
+<script type=text/javascript
+        src="{{ url_for('static', filename='assets/vendor/multi-select/js/jquery.multi-select.js') }}"></script>
+
+
+<script type="Javascript">
+
+
+    var input = 1;
+
+    function mais(campo) {
+
+        var valor = "input " + input + " - " + campo + " <input type='text' name='" + campo + "' value=''><br>";
+        var nova = document.getElementById("aqui");
+        var novadiv = document.createElement("div");
+        var nomediv = "div";
+        novadiv.innerHTML = "" + input + " <input type='text' name='" + campo + "' value=''>";
+        nova.appendChild(novadiv);
+
+        input++;
+    }
+</script>
+
+
+</body>
+
+</html>

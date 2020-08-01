@@ -1,0 +1,74 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+    <div class="dashboard-wrapper">
+
+        <div class="container-fluid  dashboard-content">
+            <div class="row">
+                <!-- ============================================================== -->
+                <!-- validation form -->
+                <!-- ============================================================== -->
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="card">
+                        <h5 class="card-header">Atualizar usuário</h5>
+                        <div class="card-body">
+                            <form method="post" class="needs-validation" novalidate>
+                                <div class="row">
+
+                                    <label>&nbsp; ID - {{ id }}</label>
+
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                        <label for="validationCustom01">Usuário</label>
+                                        <input type="text" required name="username" class="form-control"
+                                               id="validationCustom01" value="{{ username }}">
+                                    </div>
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                        <label for="validationCustom02">Senha</label>
+                                        <input type="password" required name="password" class="form-control"
+                                               id="validationCustom02" value="{{ password }}">
+                                    </div>
+
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                        <label for="validationCustom02">Email</label>
+                                        <input type="text" required name="email" class="form-control"
+                                               id="validationCustom05" value="{{ email }}">
+                                    </div>
+
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                        <label for="validationCustom02">Birthdate</label>
+                                        <input type="text" required name="birthdate" class="form-control"
+                                               id="validationCustom03" value="{{ birthdate }}">
+                                    </div>
+
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                        <label for="validationCustom02">Sex</label>
+                                        <input type="text" required name="sex" class="form-control"
+                                               id="validationCustom04" value="{{ sex }}">
+                                    </div>
+
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "><br>
+                                        <button type="submit" value="Register" class="btn btn-primary btn-lg btn-block">
+                                            Atualizar
+                                        </button>
+                                    </div>
+
+
+                                </div>
+
+                            </form>
+
+                            <p>
+
+                                {{ feedback }}
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

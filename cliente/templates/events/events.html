@@ -1,0 +1,79 @@
+{% extends "main.html" %}
+{% block content %}
+
+
+    <div class="dashboard-wrapper">
+
+        <div class="container-fluid  dashboard-content">
+
+            <div class="row">
+                <!-- ============================================================== -->
+                <!-- basic table -->
+                <!-- ============================================================== -->
+                <div>
+                    <div class="card">
+                        <h5 class="card-header">Eventos</h5>
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Titulo</th>
+                                    <th scope="col">Cidade</th>
+                                    <th scope="col">Bairro</th>
+                                    <th scope="col">Rua</th>
+                                    <th scope="col">Descrição</th>
+                                    <th scope="col">Data de inicio</th>
+                                    <th scope="col">Dono</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                {% for e in eventos %}
+
+                                    <tr>
+                                        <th scope="row">{{ e.id }}</th>
+                                        <td>{{ e.title }}</td>
+                                        <td>{{ e.city }}</td>
+                                        <td>{{ e.neighborhood }}</td>
+                                        <td>{{ e.street }}</td>
+                                        <td>{{ e.description }}</td>
+                                        <td>{{ e.startDate }}</td>
+                                        <td>{{ e.user.username }}</td>
+
+                                        {%- if e.status == true -%}
+                                            <td><a href="{{ url_for('event.event_details', evento_id = e.id) }}"
+                                                   class="btn btn-primary btn-xs">Detalhes</a></td>
+
+                                            {%- if e.user.id == userid -%}
+                                                <td><a href="{{ url_for('event.event_deletar', evento_id = e.id) }}"
+                                                       class="btn btn-danger btn-xs">Desativar Evento</a></td>
+
+                                                <td><a href="{{ url_for('event.atualizar_evento',evento_id = e.id) }}"
+                                                       class="btn btn-primary btn-xs">Atualizar Evento</a></td>
+
+                                            {% endif %}
+
+                                        {% else %}
+
+                                            <td><h6>Evento Cancelado</h6></td>
+
+                                        {% endif %}
+
+                                    </tr>
+
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+{% endblock %}

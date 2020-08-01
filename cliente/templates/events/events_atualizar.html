@@ -1,0 +1,90 @@
+{% extends "main.html" %}
+{% block content %}
+
+    <div class="dashboard-wrapper">
+
+        <div class="container-fluid  dashboard-content">
+
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="card">
+                        <h5 class="card-header">Evento</h5>
+                        <div class="card-body">
+                            <form method="post">
+                                <div class="form-group">
+                                    <label for="title" class="col-form-label">Titulo</label>
+                                    <input id="title" value="{{ title }}" name="title" type="text" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="street" class="col-form-label">Rua</label>
+                                    <input id="street" value="{{ street }}" name="street" type="text"
+                                           class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="neighborhood" class="col-form-label">Bairro</label>
+                                    <input id="neighborhood" value="{{ neighborhood }}" name="neighborhood" type="text"
+                                           class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="referencePoint" class="col-form-label">Ponto de Referencia</label>
+                                    <input id="referencePoint" value="{{ referencePoint }}" name="referencePoint"
+                                           type="text" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="description" class="col-form-label">Descrição</label>
+                                    <input id="description" value="{{ description }}" name="description" type="text"
+                                           class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="city" class="col-form-label">Cidade</label>
+                                    <input id="city" name="city" value="{{ city }}" type="text" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="startDate" class="col-form-label">Data de inicio</label>
+                                    <input id="startDate" value="{{ startDate }}" name="startDate" type="text"
+                                           class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="endDate" class="col-form-label">Data do fim</label>
+                                    <input id="endDate" value="{{ endDate }}" name="endDate" type="text"
+                                           class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Tipo de Evento</h5>
+                                        <select name="tipo_evento" class="selectpicker">
+                                            {% for tp in tipo_evento %}
+
+                                                <option>{{ tp.name }}</option>
+
+                                            {% endfor %}
+
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+
+                                    <input class="btn btn-primary btn-xs"
+                                           type="submit" name="action"
+                                           value="Atualizar Evento">
+                                </div>
+
+
+                            </form>
+                            {{ feedback }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
